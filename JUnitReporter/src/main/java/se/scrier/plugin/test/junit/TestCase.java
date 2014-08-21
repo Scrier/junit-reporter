@@ -44,19 +44,19 @@ public class TestCase extends XmlElement implements Comparable<TestCase> {
 	private String status;
 	
 	// Strings
-	private final String ELEMENT = "testcase";
-	private final String NAME_ATTRIBUTE = "name";
-	private final String ASSERTIONS_ATTRIBUTE = "assertions";
-	private final String TIME_ATTRIBUTE = "time";
-	private final String CLASSNAME_ATTRIBUTE = "classname";
-	private final String STATUS_ATTRIBUTE = "status";
+	transient private final String ELEMENT = "testcase";
+	transient private final String NAME_ATTRIBUTE = "name";
+	transient private final String ASSERTIONS_ATTRIBUTE = "assertions";
+	transient private final String TIME_ATTRIBUTE = "time";
+	transient private final String CLASSNAME_ATTRIBUTE = "classname";
+	transient private final String STATUS_ATTRIBUTE = "status";
 	
 	// Modified
-	protected final long NAME_MODIFIED = 0x0000000000000001L;
-	protected final long ASSERTIONS_MODIFIED = 0x0000000000000002L;
-	protected final long TIME_MODIFIED = 0x0000000000000004L;
-	protected final long CLASSNAME_MODIFIED = 0x0000000000000008L;
-	protected final long STATUS_MODIFIED = 0x0000000000000010L;
+	transient protected final long NAME_MODIFIED = 0x0000000000000001L;
+	transient protected final long ASSERTIONS_MODIFIED = 0x0000000000000002L;
+	transient protected final long TIME_MODIFIED = 0x0000000000000004L;
+	transient protected final long CLASSNAME_MODIFIED = 0x0000000000000008L;
+	transient protected final long STATUS_MODIFIED = 0x0000000000000010L;
 	
 	/**
 	 * Constructor

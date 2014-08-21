@@ -7,6 +7,9 @@ import se.scrier.plugin.test.junit.Failure;
 import se.scrier.plugin.test.junit.Properties;
 import se.scrier.plugin.test.junit.Property;
 import se.scrier.plugin.test.junit.Skipped;
+import se.scrier.plugin.test.junit.SystemErr;
+import se.scrier.plugin.test.junit.SystemOut;
+import se.scrier.plugin.test.junit.TestCase;
 
 public enum JUnitToJson {
 	INSTANCE;
@@ -55,6 +58,30 @@ public enum JUnitToJson {
 	
 	public Skipped getSkipped(String skipped) {
 		return gson.fromJson(skipped, Skipped.class);
+	}
+	
+	public String getSystemErr(SystemErr systemErr) {
+		return gson.toJson(systemErr, SystemErr.class);
+	}
+	
+	public SystemErr getSystemErr(String systemErr) {
+		return gson.fromJson(systemErr, SystemErr.class);
+	}
+	
+	public String getSystemOut(SystemOut systemOut) {
+		return gson.toJson(systemOut, SystemOut.class);
+	}
+	
+	public SystemOut getSystemOut(String systemOut) {
+		return gson.fromJson(systemOut, SystemOut.class);
+	}
+	
+	public String getTestCase(TestCase testCase) {
+		return gson.toJson(testCase, TestCase.class);
+	}
+	
+	public TestCase getTestCase(String testCase) {
+		return gson.fromJson(testCase, TestCase.class);
 	}
 	
 }

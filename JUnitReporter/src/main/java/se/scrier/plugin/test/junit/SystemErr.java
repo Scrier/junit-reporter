@@ -15,10 +15,10 @@ public class SystemErr extends XmlElement {
 	private String system_err;
 	
 	// Strings
-	private final String ELEMENT = "system-err";
+	transient private final String ELEMENT = "system-err";
 	
 	// Modified
-	protected final long SYSTEM_ERR_MODIFIED = 0x0000000000000001L;
+	transient protected final long SYSTEM_ERR_MODIFIED = 0x0000000000000001L;
 	
 	/**
 	 * Constructor

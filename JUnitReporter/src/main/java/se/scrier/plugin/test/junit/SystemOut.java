@@ -14,10 +14,10 @@ public class SystemOut extends XmlElement {
 	private String system_out;
 	
 	// Strings
-	private final String ELEMENT = "system-out";
+	transient private final String ELEMENT = "system-out";
 	
 	// Modified
-	protected final long SYSTEM_OUT_MODIFIED = 0x0000000000000001L;
+	transient protected final long SYSTEM_OUT_MODIFIED = 0x0000000000000001L;
 	
 	/**
 	 * Constructor
