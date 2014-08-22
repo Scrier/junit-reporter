@@ -19,11 +19,12 @@ import se.scrier.plugin.test.junit.Skipped;
 import se.scrier.plugin.test.junit.SystemErr;
 import se.scrier.plugin.test.junit.SystemOut;
 import se.scrier.plugin.test.junit.TestCase;
+import se.scrier.plugin.test.junit.TestSuite;
+import se.scrier.plugin.test.junit.TestSuites;
 
 public class JUnitToJsonTest {
 	
 	private static Logger log = Logger.getLogger(JUnitToJsonTest.class);
-	private JUnitToJson testObject;
 	private static double TOLERANCE = 0.0000001;
 	
 	@BeforeClass
@@ -543,5 +544,816 @@ public class JUnitToJsonTest {
 		assertEquals(input.getSystemOut().get(1).getSystemOut(), output.getSystemOut().get(1).getSystemOut());
 		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
 	}
+	
+	@Test
+	public void testTestSuiteEmpty() {
+		log.info("testTestSuiteEmpty");
+		TestSuite input = new TestSuite();
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteErrors() {
+		log.info("testTestSuiteErrors");
+		TestSuite input = new TestSuite();
+		input.setErrors(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteFailures() {
+		log.info("testTestSuiteFailures");
+		TestSuite input = new TestSuite();
+		input.setFailures(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteHostName() {
+		log.info("testTestSuiteHostName");
+		TestSuite input = new TestSuite();
+		input.setHostname("HostName");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteDisabled() {
+		log.info("testTestSuiteDisabled");
+		TestSuite input = new TestSuite();
+		input.setDisabled( ! input.isDisabled() );
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteId() {
+		log.info("testTestSuiteId");
+		TestSuite input = new TestSuite();
+		input.setId("Id");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteName() {
+		log.info("testTestSuiteName");
+		TestSuite input = new TestSuite();
+		input.setName("Name");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuitePackage() {
+		log.info("testTestSuitePackage");
+		TestSuite input = new TestSuite();
+		input.setPackage("Package");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteSkipped() {
+		log.info("testTestSuiteSkipped");
+		TestSuite input = new TestSuite();
+		input.setSkipped(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteTests() {
+		log.info("testTestSuiteTests");
+		TestSuite input = new TestSuite();
+		input.setTests(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteTime() {
+		log.info("testTestSuiteTime");
+		TestSuite input = new TestSuite();
+		input.setTime(12345.12345);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteTimeStamp() {
+		log.info("testTestSuiteTimeStamp");
+		TestSuite input = new TestSuite();
+		input.setTimestamp("TimeStamp");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteProperty() {
+		log.info("testTestSuiteProperty");
+		TestSuite input = new TestSuite();
+		input.getProperties().addProperty(new Property("Name 1", "Value 1"));
+		input.getProperties().addProperty(new Property("Name 2", "Value 2"));
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getProperties().getProperty().get(0).getName(), output.getProperties().getProperty().get(0).getName());
+		assertEquals(input.getProperties().getProperty().get(0).getValue(), output.getProperties().getProperty().get(0).getValue());
+		assertEquals(input.getProperties().getProperty().get(1).getName(), output.getProperties().getProperty().get(1).getName());
+		assertEquals(input.getProperties().getProperty().get(1).getValue(), output.getProperties().getProperty().get(1).getValue());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteSystemErr() {
+		log.info("testTestSuiteSystemErr");
+		TestSuite input = new TestSuite();
+		input.getSystemErr().setSystemErr("SystemErr");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteSystemOut() {
+		log.info("testTestSuiteSystemOut");
+		TestSuite input = new TestSuite();
+		input.getSystemOut().setSystemOut("SystemOut");
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+	}
+	
+	@Test
+	public void testTestSuiteTestCase() {
+		log.info("testTestSuiteTestCase");
+		TestSuite input = new TestSuite();
+		TestCase testcase = new TestCase();
+		testcase.setAssertions("assertions");
+		testcase.setClassname("Classname");
+		testcase.setName("Name");
+		testcase.setStatus("Status");
+		testcase.setTime(1234.1234);
+		testcase.getSkipped().setSkipped("skipped");
+		testcase.addError(new Error("type1", "message1"));
+		testcase.addError(new Error("type2", "message2"));
+		testcase.addFailure(new Failure("type1", "message1"));
+		testcase.addFailure(new Failure("type2", "message2"));
+		testcase.addSystemErr(new SystemErr("systemErr1"));
+		testcase.addSystemErr(new SystemErr("systemErr2"));
+		testcase.addSystemOut(new SystemOut("SystemOut1"));
+		testcase.addSystemOut(new SystemOut("SystemOut2"));
+		input.addTestcase(testcase);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+		assertEquals(input.getTestcase().get(0).getAssertions(), output.getTestcase().get(0).getAssertions());
+		assertEquals(input.getTestcase().get(0).getClassname(), output.getTestcase().get(0).getClassname());
+		assertEquals(input.getTestcase().get(0).getError().size(), output.getTestcase().get(0).getError().size());
+		assertEquals(input.getTestcase().get(0).getError().get(0).getType(), output.getTestcase().get(0).getError().get(0).getType());
+		assertEquals(input.getTestcase().get(0).getError().get(0).getMessage(), output.getTestcase().get(0).getError().get(0).getMessage());
+		assertEquals(input.getTestcase().get(0).getError().get(1).getType(), output.getTestcase().get(0).getError().get(1).getType());
+		assertEquals(input.getTestcase().get(0).getError().get(1).getMessage(), output.getTestcase().get(0).getError().get(1).getMessage());
+		assertEquals(input.getTestcase().get(0).getFailure().size(), output.getTestcase().get(0).getFailure().size());
+		assertEquals(input.getTestcase().get(0).getFailure().get(0).getType(), output.getTestcase().get(0).getFailure().get(0).getType());
+		assertEquals(input.getTestcase().get(0).getFailure().get(0).getMessage(), output.getTestcase().get(0).getFailure().get(0).getMessage());
+		assertEquals(input.getTestcase().get(0).getFailure().get(1).getType(), output.getTestcase().get(0).getFailure().get(1).getType());
+		assertEquals(input.getTestcase().get(0).getFailure().get(1).getMessage(), output.getTestcase().get(0).getFailure().get(1).getMessage());
+		assertEquals(input.getTestcase().get(0).getName(), output.getTestcase().get(0).getName());
+		assertEquals(input.getTestcase().get(0).getSkipped().getSkipped(), output.getTestcase().get(0).getSkipped().getSkipped());
+		assertEquals(input.getTestcase().get(0).getStatus(), output.getTestcase().get(0).getStatus());
+		assertEquals(input.getTestcase().get(0).getSystemErr().size(), output.getTestcase().get(0).getSystemErr().size());
+		assertEquals(input.getTestcase().get(0).getSystemErr().get(0).getSystemErr(), output.getTestcase().get(0).getSystemErr().get(0).getSystemErr());
+		assertEquals(input.getTestcase().get(0).getSystemErr().get(1).getSystemErr(), output.getTestcase().get(0).getSystemErr().get(1).getSystemErr());
+		assertEquals(input.getTestcase().get(0).getSystemOut().size(), output.getTestcase().get(0).getSystemOut().size());
+		assertEquals(input.getTestcase().get(0).getSystemOut().get(0).getSystemOut(), output.getTestcase().get(0).getSystemOut().get(0).getSystemOut());
+		assertEquals(input.getTestcase().get(0).getSystemOut().get(1).getSystemOut(), output.getTestcase().get(0).getSystemOut().get(1).getSystemOut());
+		assertEquals(input.getTestcase().get(0).getTime(), output.getTestcase().get(0).getTime(), TOLERANCE);
+	}
+	
+	@Test
+	public void testTestSuiteFull() {
+		log.info("testTestSuiteFull");
+		TestSuite input = new TestSuite();
+		input.setErrors(12345);
+		input.setFailures(12345);
+		input.setHostname("HostName");
+		input.setDisabled( ! input.isDisabled() );
+		input.setId("Id");
+		input.setName("Name");
+		input.setPackage("Package");
+		input.setSkipped(12345);
+		input.setTests(12345);
+		input.setTime(12345.12345);
+		input.setTimestamp("TimeStamp");
+		input.getProperties().addProperty(new Property("Name 1", "Value 1"));
+		input.getProperties().addProperty(new Property("Name 2", "Value 2"));
+		input.getSystemErr().setSystemErr("SystemErr");
+		input.getSystemOut().setSystemOut("SystemOut");
+		TestCase testcase1 = new TestCase();
+		testcase1.setAssertions("assertions");
+		testcase1.setClassname("Classname");
+		testcase1.setName("Name");
+		testcase1.setStatus("Status");
+		testcase1.setTime(1234.1234);
+		testcase1.getSkipped().setSkipped("skipped");
+		testcase1.addError(new Error("type1", "message1"));
+		testcase1.addError(new Error("type2", "message2"));
+		testcase1.addFailure(new Failure("type1", "message1"));
+		testcase1.addFailure(new Failure("type2", "message2"));
+		testcase1.addSystemErr(new SystemErr("systemErr1"));
+		testcase1.addSystemErr(new SystemErr("systemErr2"));
+		testcase1.addSystemOut(new SystemOut("SystemOut1"));
+		testcase1.addSystemOut(new SystemOut("SystemOut2"));
+		input.addTestcase(testcase1);
+		TestCase testcase2 = new TestCase();
+		testcase2.setAssertions("2assertions");
+		testcase2.setClassname("2Classname");
+		testcase2.setName("2Name");
+		testcase2.setStatus("2Status");
+		testcase2.setTime(12345.12345);
+		testcase2.getSkipped().setSkipped("2skipped");
+		testcase2.addError(new Error("2type1", "message1"));
+		testcase2.addError(new Error("2type2", "message2"));
+		testcase2.addFailure(new Failure("2type1", "message1"));
+		testcase2.addFailure(new Failure("2type2", "message2"));
+		testcase2.addSystemErr(new SystemErr("2systemErr1"));
+		testcase2.addSystemErr(new SystemErr("2systemErr2"));
+		testcase2.addSystemOut(new SystemOut("2SystemOut1"));
+		testcase2.addSystemOut(new SystemOut("2SystemOut2"));
+		input.addTestcase(testcase2);
+		String json = JUnitToJson.INSTANCE.getTestSuite(input);
+		log.info("String: " + json);
+		TestSuite output = JUnitToJson.INSTANCE.getTestSuite(json);
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getHostname(), output.getHostname());
+		assertEquals(input.isDisabled(), output.isDisabled());
+		assertEquals(input.getId(), output.getId());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getPackage(), output.getPackage());
+		assertEquals(input.getSkipped(), output.getSkipped());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTimestamp(), output.getTimestamp());
+		assertEquals(input.getProperties().getProperty().size(), output.getProperties().getProperty().size());
+		assertEquals(input.getProperties().getProperty().get(0).getName(), output.getProperties().getProperty().get(0).getName());
+		assertEquals(input.getProperties().getProperty().get(0).getValue(), output.getProperties().getProperty().get(0).getValue());
+		assertEquals(input.getProperties().getProperty().get(1).getName(), output.getProperties().getProperty().get(1).getName());
+		assertEquals(input.getProperties().getProperty().get(1).getValue(), output.getProperties().getProperty().get(1).getValue());
+		assertEquals(input.getSystemErr().getSystemErr(), output.getSystemErr().getSystemErr());
+		assertEquals(input.getSystemOut().getSystemOut(), output.getSystemOut().getSystemOut());
+		assertEquals(input.getTestcase().size(), output.getTestcase().size());
+		assertEquals(input.getTestcase().get(0).getAssertions(), output.getTestcase().get(0).getAssertions());
+		assertEquals(input.getTestcase().get(0).getClassname(), output.getTestcase().get(0).getClassname());
+		assertEquals(input.getTestcase().get(0).getError().size(), output.getTestcase().get(0).getError().size());
+		assertEquals(input.getTestcase().get(0).getError().get(0).getType(), output.getTestcase().get(0).getError().get(0).getType());
+		assertEquals(input.getTestcase().get(0).getError().get(0).getMessage(), output.getTestcase().get(0).getError().get(0).getMessage());
+		assertEquals(input.getTestcase().get(0).getError().get(1).getType(), output.getTestcase().get(0).getError().get(1).getType());
+		assertEquals(input.getTestcase().get(0).getError().get(1).getMessage(), output.getTestcase().get(0).getError().get(1).getMessage());
+		assertEquals(input.getTestcase().get(0).getFailure().size(), output.getTestcase().get(0).getFailure().size());
+		assertEquals(input.getTestcase().get(0).getFailure().get(0).getType(), output.getTestcase().get(0).getFailure().get(0).getType());
+		assertEquals(input.getTestcase().get(0).getFailure().get(0).getMessage(), output.getTestcase().get(0).getFailure().get(0).getMessage());
+		assertEquals(input.getTestcase().get(0).getFailure().get(1).getType(), output.getTestcase().get(0).getFailure().get(1).getType());
+		assertEquals(input.getTestcase().get(0).getFailure().get(1).getMessage(), output.getTestcase().get(0).getFailure().get(1).getMessage());
+		assertEquals(input.getTestcase().get(0).getName(), output.getTestcase().get(0).getName());
+		assertEquals(input.getTestcase().get(0).getSkipped().getSkipped(), output.getTestcase().get(0).getSkipped().getSkipped());
+		assertEquals(input.getTestcase().get(0).getStatus(), output.getTestcase().get(0).getStatus());
+		assertEquals(input.getTestcase().get(0).getSystemErr().size(), output.getTestcase().get(0).getSystemErr().size());
+		assertEquals(input.getTestcase().get(0).getSystemErr().get(0).getSystemErr(), output.getTestcase().get(0).getSystemErr().get(0).getSystemErr());
+		assertEquals(input.getTestcase().get(0).getSystemErr().get(1).getSystemErr(), output.getTestcase().get(0).getSystemErr().get(1).getSystemErr());
+		assertEquals(input.getTestcase().get(0).getSystemOut().size(), output.getTestcase().get(0).getSystemOut().size());
+		assertEquals(input.getTestcase().get(0).getSystemOut().get(0).getSystemOut(), output.getTestcase().get(0).getSystemOut().get(0).getSystemOut());
+		assertEquals(input.getTestcase().get(0).getSystemOut().get(1).getSystemOut(), output.getTestcase().get(0).getSystemOut().get(1).getSystemOut());
+		assertEquals(input.getTestcase().get(0).getTime(), output.getTestcase().get(0).getTime(), TOLERANCE);
 
+		assertEquals(input.getTestcase().get(1).getAssertions(), output.getTestcase().get(1).getAssertions());
+		assertEquals(input.getTestcase().get(1).getClassname(), output.getTestcase().get(1).getClassname());
+		assertEquals(input.getTestcase().get(1).getError().size(), output.getTestcase().get(1).getError().size());
+		assertEquals(input.getTestcase().get(1).getError().get(0).getType(), output.getTestcase().get(1).getError().get(0).getType());
+		assertEquals(input.getTestcase().get(1).getError().get(0).getMessage(), output.getTestcase().get(1).getError().get(0).getMessage());
+		assertEquals(input.getTestcase().get(1).getError().get(1).getType(), output.getTestcase().get(1).getError().get(1).getType());
+		assertEquals(input.getTestcase().get(1).getError().get(1).getMessage(), output.getTestcase().get(1).getError().get(1).getMessage());
+		assertEquals(input.getTestcase().get(1).getFailure().size(), output.getTestcase().get(1).getFailure().size());
+		assertEquals(input.getTestcase().get(1).getFailure().get(0).getType(), output.getTestcase().get(1).getFailure().get(0).getType());
+		assertEquals(input.getTestcase().get(1).getFailure().get(0).getMessage(), output.getTestcase().get(1).getFailure().get(0).getMessage());
+		assertEquals(input.getTestcase().get(1).getFailure().get(1).getType(), output.getTestcase().get(1).getFailure().get(1).getType());
+		assertEquals(input.getTestcase().get(1).getFailure().get(1).getMessage(), output.getTestcase().get(1).getFailure().get(1).getMessage());
+		assertEquals(input.getTestcase().get(1).getName(), output.getTestcase().get(1).getName());
+		assertEquals(input.getTestcase().get(1).getSkipped().getSkipped(), output.getTestcase().get(1).getSkipped().getSkipped());
+		assertEquals(input.getTestcase().get(1).getStatus(), output.getTestcase().get(1).getStatus());
+		assertEquals(input.getTestcase().get(1).getSystemErr().size(), output.getTestcase().get(1).getSystemErr().size());
+		assertEquals(input.getTestcase().get(1).getSystemErr().get(0).getSystemErr(), output.getTestcase().get(1).getSystemErr().get(0).getSystemErr());
+		assertEquals(input.getTestcase().get(1).getSystemErr().get(1).getSystemErr(), output.getTestcase().get(1).getSystemErr().get(1).getSystemErr());
+		assertEquals(input.getTestcase().get(1).getSystemOut().size(), output.getTestcase().get(1).getSystemOut().size());
+		assertEquals(input.getTestcase().get(1).getSystemOut().get(0).getSystemOut(), output.getTestcase().get(1).getSystemOut().get(0).getSystemOut());
+		assertEquals(input.getTestcase().get(1).getSystemOut().get(1).getSystemOut(), output.getTestcase().get(1).getSystemOut().get(1).getSystemOut());
+		assertEquals(input.getTestcase().get(1).getTime(), output.getTestcase().get(1).getTime(), TOLERANCE);
+	}
+
+	@Test
+	public void testTestSuitseEmpty() {
+		log.info("testTestSuitesEmpty");
+		TestSuites input = new TestSuites();
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseDisabled() {
+		log.info("testTestSuitesDisabled");
+		TestSuites input = new TestSuites();
+		input.setDisabled(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseErrors() {
+		log.info("testTestSuitesErrors");
+		TestSuites input = new TestSuites();
+		input.setErrors(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseFailures() {
+		log.info("testTestSuitesFailures");
+		TestSuites input = new TestSuites();
+		input.setFailures(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseName() {
+		log.info("testTestSuitesName");
+		TestSuites input = new TestSuites();
+		input.setName("Name");
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseTests() {
+		log.info("testTestSuitesTests");
+		TestSuites input = new TestSuites();
+		input.setTests(12345);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseTime() {
+		log.info("testTestSuitesTime");
+		TestSuites input = new TestSuites();
+		input.setTime(12345.12345);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+	}
+	
+	@Test
+	public void testTestSuitseTestSuite() {
+		log.info("testTestSuitesTestSuite");
+		TestSuites input = new TestSuites();
+		
+		TestSuite testsuite = new TestSuite();
+		testsuite.setErrors(12345);
+		testsuite.setFailures(12345);
+		testsuite.setHostname("HostName");
+		testsuite.setDisabled( ! testsuite.isDisabled() );
+		testsuite.setId("Id");
+		testsuite.setName("Name");
+		testsuite.setPackage("Package");
+		testsuite.setSkipped(12345);
+		testsuite.setTests(12345);
+		testsuite.setTime(12345.12345);
+		testsuite.setTimestamp("TimeStamp");
+		testsuite.getProperties().addProperty(new Property("Name 1", "Value 1"));
+		testsuite.getProperties().addProperty(new Property("Name 2", "Value 2"));
+		testsuite.getSystemErr().setSystemErr("SystemErr");
+		testsuite.getSystemOut().setSystemOut("SystemOut");
+		TestCase testcase1 = new TestCase();
+		testcase1.setAssertions("assertions");
+		testcase1.setClassname("Classname");
+		testcase1.setName("Name");
+		testcase1.setStatus("Status");
+		testcase1.setTime(1234.1234);
+		testcase1.getSkipped().setSkipped("skipped");
+		testcase1.addError(new Error("type1", "message1"));
+		testcase1.addError(new Error("type2", "message2"));
+		testcase1.addFailure(new Failure("type1", "message1"));
+		testcase1.addFailure(new Failure("type2", "message2"));
+		testcase1.addSystemErr(new SystemErr("systemErr1"));
+		testcase1.addSystemErr(new SystemErr("systemErr2"));
+		testcase1.addSystemOut(new SystemOut("SystemOut1"));
+		testcase1.addSystemOut(new SystemOut("SystemOut2"));
+		testsuite.addTestcase(testcase1);
+		TestCase testcase2 = new TestCase();
+		testcase2.setAssertions("2assertions");
+		testcase2.setClassname("2Classname");
+		testcase2.setName("2Name");
+		testcase2.setStatus("2Status");
+		testcase2.setTime(12345.12345);
+		testcase2.getSkipped().setSkipped("2skipped");
+		testcase2.addError(new Error("2type1", "message1"));
+		testcase2.addError(new Error("2type2", "message2"));
+		testcase2.addFailure(new Failure("2type1", "message1"));
+		testcase2.addFailure(new Failure("2type2", "message2"));
+		testcase2.addSystemErr(new SystemErr("2systemErr1"));
+		testcase2.addSystemErr(new SystemErr("2systemErr2"));
+		testcase2.addSystemOut(new SystemOut("2SystemOut1"));
+		testcase2.addSystemOut(new SystemOut("2SystemOut2"));
+		testsuite.addTestcase(testcase2);
+		
+		input.addTestsuite(testsuite);
+		String json = JUnitToJson.INSTANCE.getTestSuites(input);
+		log.info("String: " + json);
+		TestSuites output = JUnitToJson.INSTANCE.getTestSuites(json);
+		assertEquals(input.getDisabled(), output.getDisabled());
+		assertEquals(input.getErrors(), output.getErrors());
+		assertEquals(input.getFailures(), output.getFailures());
+		assertEquals(input.getName(), output.getName());
+		assertEquals(input.getTests(), output.getTests());
+		assertEquals(input.getTime(), output.getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().size(), output.getTestsuite().size());
+		
+		assertEquals(input.getTestsuite().get(0).getErrors(), output.getTestsuite().get(0).getErrors());
+		assertEquals(input.getTestsuite().get(0).getFailures(), output.getTestsuite().get(0).getFailures());
+		assertEquals(input.getTestsuite().get(0).getHostname(), output.getTestsuite().get(0).getHostname());
+		assertEquals(input.getTestsuite().get(0).isDisabled(), output.getTestsuite().get(0).isDisabled());
+		assertEquals(input.getTestsuite().get(0).getId(), output.getTestsuite().get(0).getId());
+		assertEquals(input.getTestsuite().get(0).getName(), output.getTestsuite().get(0).getName());
+		assertEquals(input.getTestsuite().get(0).getPackage(), output.getTestsuite().get(0).getPackage());
+		assertEquals(input.getTestsuite().get(0).getSkipped(), output.getTestsuite().get(0).getSkipped());
+		assertEquals(input.getTestsuite().get(0).getTests(), output.getTestsuite().get(0).getTests());
+		assertEquals(input.getTestsuite().get(0).getTime(), output.getTestsuite().get(0).getTime(), TOLERANCE);
+		assertEquals(input.getTestsuite().get(0).getTimestamp(), output.getTestsuite().get(0).getTimestamp());
+		assertEquals(input.getTestsuite().get(0).getProperties().getProperty().size(), output.getTestsuite().get(0).getProperties().getProperty().size());
+		assertEquals(input.getTestsuite().get(0).getProperties().getProperty().get(0).getName(), output.getTestsuite().get(0).getProperties().getProperty().get(0).getName());
+		assertEquals(input.getTestsuite().get(0).getProperties().getProperty().get(0).getValue(), output.getTestsuite().get(0).getProperties().getProperty().get(0).getValue());
+		assertEquals(input.getTestsuite().get(0).getProperties().getProperty().get(1).getName(), output.getTestsuite().get(0).getProperties().getProperty().get(1).getName());
+		assertEquals(input.getTestsuite().get(0).getProperties().getProperty().get(1).getValue(), output.getTestsuite().get(0).getProperties().getProperty().get(1).getValue());
+		assertEquals(input.getTestsuite().get(0).getSystemErr().getSystemErr(), output.getTestsuite().get(0).getSystemErr().getSystemErr());
+		assertEquals(input.getTestsuite().get(0).getSystemOut().getSystemOut(), output.getTestsuite().get(0).getSystemOut().getSystemOut());
+		assertEquals(input.getTestsuite().get(0).getTestcase().size(), output.getTestsuite().get(0).getTestcase().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getAssertions(), output.getTestsuite().get(0).getTestcase().get(0).getAssertions());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getClassname(), output.getTestsuite().get(0).getTestcase().get(0).getClassname());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getError().size(), output.getTestsuite().get(0).getTestcase().get(0).getError().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getError().get(0).getType(), output.getTestsuite().get(0).getTestcase().get(0).getError().get(0).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getError().get(0).getMessage(), output.getTestsuite().get(0).getTestcase().get(0).getError().get(0).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getError().get(1).getType(), output.getTestsuite().get(0).getTestcase().get(0).getError().get(1).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getError().get(1).getMessage(), output.getTestsuite().get(0).getTestcase().get(0).getError().get(1).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getFailure().size(), output.getTestsuite().get(0).getTestcase().get(0).getFailure().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getFailure().get(0).getType(), output.getTestsuite().get(0).getTestcase().get(0).getFailure().get(0).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getFailure().get(0).getMessage(), output.getTestsuite().get(0).getTestcase().get(0).getFailure().get(0).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getFailure().get(1).getType(), output.getTestsuite().get(0).getTestcase().get(0).getFailure().get(1).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getFailure().get(1).getMessage(), output.getTestsuite().get(0).getTestcase().get(0).getFailure().get(1).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getName(), output.getTestsuite().get(0).getTestcase().get(0).getName());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSkipped().getSkipped(), output.getTestsuite().get(0).getTestcase().get(0).getSkipped().getSkipped());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getStatus(), output.getTestsuite().get(0).getTestcase().get(0).getStatus());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemErr().size(), output.getTestsuite().get(0).getTestcase().get(0).getSystemErr().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemErr().get(0).getSystemErr(), output.getTestsuite().get(0).getTestcase().get(0).getSystemErr().get(0).getSystemErr());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemErr().get(1).getSystemErr(), output.getTestsuite().get(0).getTestcase().get(0).getSystemErr().get(1).getSystemErr());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemOut().size(), output.getTestsuite().get(0).getTestcase().get(0).getSystemOut().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemOut().get(0).getSystemOut(), output.getTestsuite().get(0).getTestcase().get(0).getSystemOut().get(0).getSystemOut());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getSystemOut().get(1).getSystemOut(), output.getTestsuite().get(0).getTestcase().get(0).getSystemOut().get(1).getSystemOut());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(0).getTime(), output.getTestsuite().get(0).getTestcase().get(0).getTime(), TOLERANCE);
+
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getAssertions(), output.getTestsuite().get(0).getTestcase().get(1).getAssertions());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getClassname(), output.getTestsuite().get(0).getTestcase().get(1).getClassname());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getError().size(), output.getTestsuite().get(0).getTestcase().get(1).getError().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getError().get(0).getType(), output.getTestsuite().get(0).getTestcase().get(1).getError().get(0).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getError().get(0).getMessage(), output.getTestsuite().get(0).getTestcase().get(1).getError().get(0).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getError().get(1).getType(), output.getTestsuite().get(0).getTestcase().get(1).getError().get(1).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getError().get(1).getMessage(), output.getTestsuite().get(0).getTestcase().get(1).getError().get(1).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getFailure().size(), output.getTestsuite().get(0).getTestcase().get(1).getFailure().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getFailure().get(0).getType(), output.getTestsuite().get(0).getTestcase().get(1).getFailure().get(0).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getFailure().get(0).getMessage(), output.getTestsuite().get(0).getTestcase().get(1).getFailure().get(0).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getFailure().get(1).getType(), output.getTestsuite().get(0).getTestcase().get(1).getFailure().get(1).getType());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getFailure().get(1).getMessage(), output.getTestsuite().get(0).getTestcase().get(1).getFailure().get(1).getMessage());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getName(), output.getTestsuite().get(0).getTestcase().get(1).getName());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSkipped().getSkipped(), output.getTestsuite().get(0).getTestcase().get(1).getSkipped().getSkipped());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getStatus(), output.getTestsuite().get(0).getTestcase().get(1).getStatus());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemErr().size(), output.getTestsuite().get(0).getTestcase().get(1).getSystemErr().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemErr().get(0).getSystemErr(), output.getTestsuite().get(0).getTestcase().get(1).getSystemErr().get(0).getSystemErr());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemErr().get(1).getSystemErr(), output.getTestsuite().get(0).getTestcase().get(1).getSystemErr().get(1).getSystemErr());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemOut().size(), output.getTestsuite().get(0).getTestcase().get(1).getSystemOut().size());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemOut().get(0).getSystemOut(), output.getTestsuite().get(0).getTestcase().get(1).getSystemOut().get(0).getSystemOut());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getSystemOut().get(1).getSystemOut(), output.getTestsuite().get(0).getTestcase().get(1).getSystemOut().get(1).getSystemOut());
+		assertEquals(input.getTestsuite().get(0).getTestcase().get(1).getTime(), output.getTestsuite().get(0).getTestcase().get(1).getTime(), TOLERANCE);
+	}
+	
 }

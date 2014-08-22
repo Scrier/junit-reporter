@@ -39,21 +39,21 @@ public class TestSuites extends XmlElement {
 	private int errors;
 	
 	// Strings
-	private final String ELEMENT = "testsuites";
-	private final String NAME_ATTRIBUTE = "name";
-	private final String TIME_ATTRIBUTE = "time";
-	private final String TESTS_ATTRIBUTE = "tests";
-	private final String FAILURES_ATTRIBUTE = "failures";
-	private final String DISABLED_ATTRIBUTE = "disabled";
-	private final String ERRORS_ATTRIBUTE = "errors";
+	transient private final String ELEMENT = "testsuites";
+	transient private final String NAME_ATTRIBUTE = "name";
+	transient private final String TIME_ATTRIBUTE = "time";
+	transient private final String TESTS_ATTRIBUTE = "tests";
+	transient private final String FAILURES_ATTRIBUTE = "failures";
+	transient private final String DISABLED_ATTRIBUTE = "disabled";
+	transient private final String ERRORS_ATTRIBUTE = "errors";
 	
 	// Modified
-	protected final long NAME_MODIFIED = 0x0000000000000001L;
-	protected final long TIME_MODIFIED = 0x0000000000000002L;
-	protected final long TESTS_MODIFIED = 0x0000000000000004L;
-	protected final long FAILURES_MODIFIED = 0x0000000000000008L;
-	protected final long DISABLED_MODIFIED = 0x0000000000000010L;
-	protected final long ERRORS_MODIFIED = 0x0000000000000020L;
+	transient protected final long NAME_MODIFIED = 0x0000000000000001L;
+	transient protected final long TIME_MODIFIED = 0x0000000000000002L;
+	transient protected final long TESTS_MODIFIED = 0x0000000000000004L;
+	transient protected final long FAILURES_MODIFIED = 0x0000000000000008L;
+	transient protected final long DISABLED_MODIFIED = 0x0000000000000010L;
+	transient protected final long ERRORS_MODIFIED = 0x0000000000000020L;
 
 	/**
 	 * Constructor

@@ -10,6 +10,8 @@ import se.scrier.plugin.test.junit.Skipped;
 import se.scrier.plugin.test.junit.SystemErr;
 import se.scrier.plugin.test.junit.SystemOut;
 import se.scrier.plugin.test.junit.TestCase;
+import se.scrier.plugin.test.junit.TestSuite;
+import se.scrier.plugin.test.junit.TestSuites;
 
 public enum JUnitToJson {
 	INSTANCE;
@@ -82,6 +84,22 @@ public enum JUnitToJson {
 	
 	public TestCase getTestCase(String testCase) {
 		return gson.fromJson(testCase, TestCase.class);
+	}
+	
+	public String getTestSuite(TestSuite testSuite) {
+		return gson.toJson(testSuite, TestSuite.class);
+	}
+	
+	public TestSuite getTestSuite(String testSuite) {
+		return gson.fromJson(testSuite, TestSuite.class);
+	}
+	
+	public String getTestSuites(TestSuites testSuites) {
+		return gson.toJson(testSuites, TestSuites.class);
+	}
+	
+	public TestSuites getTestSuites(String testSuites) {
+		return gson.fromJson(testSuites, TestSuites.class);
 	}
 	
 }

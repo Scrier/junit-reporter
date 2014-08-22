@@ -55,31 +55,31 @@ public class TestSuite extends XmlElement implements Comparable<TestSuite> {
 	private String _package;
 	
 	// Strings
-	private final String ELEMENT = "testsuite";
-	private final String NAME_ATTRIBUTE = "name";
-	private final String TESTS_ATTRIBUTE = "tests";
-	private final String FAILURES_ATTRIBUTE = "failures";
-	private final String ERRORS_ATTRIBUTE = "errors";
-	private final String TIME_ATTRIBUTE = "time";
-	private final String DISABLED_ATTRIBUTE = "disabled";
-	private final String SKIPPED_ATTRIBUTE = "skipped";
-	private final String TIMESTAMP_ATTRIBUTE = "timestamp";
-	private final String HOSTNAME_ATTRIBUTE = "hostname";
-	private final String ID_ATTRIBUTE = "id";
-	private final String PACKAGE_ATTRIBUTE = "package";
+	transient private final String ELEMENT = "testsuite";
+	transient private final String NAME_ATTRIBUTE = "name";
+	transient private final String TESTS_ATTRIBUTE = "tests";
+	transient private final String FAILURES_ATTRIBUTE = "failures";
+	transient private final String ERRORS_ATTRIBUTE = "errors";
+	transient private final String TIME_ATTRIBUTE = "time";
+	transient private final String DISABLED_ATTRIBUTE = "disabled";
+	transient private final String SKIPPED_ATTRIBUTE = "skipped";
+	transient private final String TIMESTAMP_ATTRIBUTE = "timestamp";
+	transient private final String HOSTNAME_ATTRIBUTE = "hostname";
+	transient private final String ID_ATTRIBUTE = "id";
+	transient private final String PACKAGE_ATTRIBUTE = "package";
 	
 	// Modified
-	private final long NAME_MODIFIED = 0x0000000000000001L;
-	private final long TESTS_MODIFIED = 0x0000000000000002L;
-	private final long FAILURES_MODIFIED = 0x0000000000000004L;
-	private final long ERRORS_MODIFIED = 0x0000000000000008L;
-	private final long TIME_MODIFIED = 0x0000000000000010L;
-	private final long DISABLED_MODIFIED = 0x0000000000000020L;
-	private final long SKIPPED_MODIFIED = 0x0000000000000040L;
-	private final long TIMESTAMP_MODIFIED = 0x0000000000000080L;
-	private final long HOSTNAME_MODIFIED = 0x0000000000000100L;
-	private final long ID_MODIFIED = 0x0000000000000200L;
-	private final long PACKAGE_MODIFIED = 0x0000000000000400L;
+	transient private final long NAME_MODIFIED = 0x0000000000000001L;
+	transient private final long TESTS_MODIFIED = 0x0000000000000002L;
+	transient private final long FAILURES_MODIFIED = 0x0000000000000004L;
+	transient private final long ERRORS_MODIFIED = 0x0000000000000008L;
+	transient private final long TIME_MODIFIED = 0x0000000000000010L;
+	transient private final long DISABLED_MODIFIED = 0x0000000000000020L;
+	transient private final long SKIPPED_MODIFIED = 0x0000000000000040L;
+	transient private final long TIMESTAMP_MODIFIED = 0x0000000000000080L;
+	transient private final long HOSTNAME_MODIFIED = 0x0000000000000100L;
+	transient private final long ID_MODIFIED = 0x0000000000000200L;
+	transient private final long PACKAGE_MODIFIED = 0x0000000000000400L;
 	
 	/**
 	 * Constructor
