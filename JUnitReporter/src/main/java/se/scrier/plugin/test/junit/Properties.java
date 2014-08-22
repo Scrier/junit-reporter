@@ -23,7 +23,7 @@ public class Properties extends XmlElement {
 	private List<Property> property;
 	
 	// Strings
-	protected final String ELEMENT = "properties";
+	transient protected final String ELEMENT = "properties";
 	
 	/**
 	 * Constructor

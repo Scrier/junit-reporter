@@ -20,13 +20,13 @@ public class Failure extends XmlElement {
 	private String message;
 	
 	// Strings
-	private final String ELEMENT = "failure";
-	private final String TYPE_ATTRIBUTE = "type";
-	private final String MESSAGE_ATTRIBUTE = "message";
+	transient private final String ELEMENT = "failure";
+	transient private final String TYPE_ATTRIBUTE = "type";
+	transient private final String MESSAGE_ATTRIBUTE = "message";
 	
 	// Modified
-	protected final long TYPE_MODIFIED = 0x0000000000000001L;
-	protected final long MESSAGE_MODIFIED = 0x0000000000000002L;
+	transient protected final long TYPE_MODIFIED = 0x0000000000000001L;
+	transient protected final long MESSAGE_MODIFIED = 0x0000000000000002L;
 	
 	/**
 	 * Constructor

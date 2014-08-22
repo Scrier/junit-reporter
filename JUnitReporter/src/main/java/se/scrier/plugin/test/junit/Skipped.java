@@ -15,10 +15,10 @@ public class Skipped extends XmlElement {
 	private String skipped;
 	
 	// Strings
-	private final String ELEMENT = "skipped";
+	transient private final String ELEMENT = "skipped";
 	
 	// Modified
-	protected final long SKIPPED_MODIFIED = 0x0000000000000001L;
+	transient protected final long SKIPPED_MODIFIED = 0x0000000000000001L;
 	
 	/**
 	 * Constructor

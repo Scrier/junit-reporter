@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
  */
 public abstract class XmlElement {
 	
-	private long valuesModified;
+	transient private long valuesModified;
 	
 	/**
 	 * Constructor

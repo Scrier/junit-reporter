@@ -20,9 +20,13 @@ public class Property extends XmlElement {
 	private String value;
 	
 	// Strings
-	private final String ELEMENT = "property";
-	private final String NAME_ATTRIBUTE = "name";
-	private final String VALUE_ATTRIBUTE = "value";
+	transient private final String ELEMENT = "property";
+	transient private final String NAME_ATTRIBUTE = "name";
+	transient private final String VALUE_ATTRIBUTE = "value";
+	
+	// Modified
+	transient protected final long NAME_MODIFIED = 0x0000000000000001L;
+	transient protected final long VALUE_MODIFIED = 0x0000000000000002L;
 	
 	/**
 	 * Constructor
@@ -33,9 +37,14 @@ public class Property extends XmlElement {
 		resetValuesModified();
 	}
 	
-	// Modified
-	protected final long NAME_MODIFIED = 0x0000000000000001L;
-	protected final long VALUE_MODIFIED = 0x0000000000000002L;
+	/**
+	 * Constructor
+	 */
+	public Property(String name, String value) {
+		setName(name);
+		setValue(value);
+		resetValuesModified();
+	}
 	
 	@Override
 	public void write(Document doc, Element parent) throws RequiredAttributeException {
